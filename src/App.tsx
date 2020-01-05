@@ -17,6 +17,10 @@ class App extends React.Component<{}, State> {
     selectedVideo: null,
   }
 
+  componentDidMount() {
+    this.handleSubmit('Bardo Royale as cegas Jinx OP');
+  }
+
   handleOnVideoSelect = (video: YoutubeVideo) => {
     this.setState({ selectedVideo: video });
   }
