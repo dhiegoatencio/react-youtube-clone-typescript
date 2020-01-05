@@ -2,6 +2,9 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 
 import React from 'react';
 import { YoutubeVideo } from '../models/YoutubeVideo';
+import { jsx } from '@emotion/core'; /** @jsx jsx */
+
+
 
 const VideoItem: React.FC<{
   video: YoutubeVideo,
@@ -14,7 +17,7 @@ const VideoItem: React.FC<{
     <Grid item xs={12}>
       <Paper
         onClick={() => onVideoSelect(video)}
-        style={{
+        css={{
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center'
@@ -22,7 +25,7 @@ const VideoItem: React.FC<{
       >
         <img alt="thumbnail"
           src={video.snippet.thumbnails.medium.url}
-          style={{
+          css={{
             marginRight: '20px'
           }}
         />

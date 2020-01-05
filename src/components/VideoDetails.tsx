@@ -2,6 +2,7 @@ import { Paper, Typography } from '@material-ui/core';
 
 import React from 'react';
 import { YoutubeVideo } from '../models/YoutubeVideo';
+import { jsx } from '@emotion/core'; /** @jsx jsx */
 
 const VideoDetail: React.FC<{
   video: YoutubeVideo | null
@@ -13,7 +14,7 @@ const VideoDetail: React.FC<{
 
   return (
     <React.Fragment>
-      <Paper elevation={6} style={{
+      <Paper elevation={6} css={{
         height: '70%'
       }}>
         <iframe frameBorder="0"
@@ -23,7 +24,7 @@ const VideoDetail: React.FC<{
         />
       </Paper>
 
-      <Paper elevation={6} style={{ padding: '15px' }}>
+      <Paper elevation={6} css={{ padding: '15px' }}>
         <Typography variant="h4">
           {video.snippet.title} - {video.snippet.channelTitle}
         </Typography>

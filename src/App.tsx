@@ -4,7 +4,10 @@ import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetails';
 import VideoList from './components/VideoList';
 import { YoutubeVideo } from './models/YoutubeVideo';
+import { jsx } from '@emotion/core'; /** @jsx jsx */
 import youtube from './api/youtube';
+
+
 
 interface State {
   videos: YoutubeVideo[] | null,
@@ -53,7 +56,7 @@ class App extends React.Component<{}, State> {
         <Grid item xs={12}>
           <SearchBar onFormSubmit={this.handleSubmit} />
         </Grid>
-        <Grid item md={8} xs={12} style={{ marginBottom: "90px" }}>
+        <Grid item md={8} xs={12} css={{ marginBottom: "90px" }}>
           <VideoDetail video={selectedVideo} />
         </Grid>
         <Grid item md={4} xs={12}>

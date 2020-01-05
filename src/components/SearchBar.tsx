@@ -1,6 +1,7 @@
 import { Paper, TextField } from "@material-ui/core";
 
 import React from 'react';
+import { jsx } from '@emotion/core'; /** @jsx jsx */
 
 interface Props {
   onFormSubmit?(event: string): void,
@@ -32,7 +33,7 @@ class SearchBar extends React.Component<Props, State> {
 
   render() {
     return(
-      <Paper elevation={6} style={{ padding: '25px' }}>
+      <Paper elevation={6} css={{ padding: '25px' }}>
         <form onSubmit={this.handleSubmit}>
           <TextField fullWidth
             autoFocus
