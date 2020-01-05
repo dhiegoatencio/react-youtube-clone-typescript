@@ -3,17 +3,22 @@ import React from 'react';
 import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetails';
 import VideoList from './components/VideoList';
+import { YoutubeVideo } from './models/YoutubeVideo';
 import youtube from './api/youtube';
 
 interface State {
-  videos: [],
-  selectedVideo: any
+  videos: YoutubeVideo[] | null,
+  selectedVideo: YoutubeVideo | null,
 }
 class App extends React.Component<{}, State> {
 
-  state: Readonly<State> = {
-    videos: [],
-    selectedVideo: null
+  readonly state: Readonly<State> = {
+    videos: null,
+    selectedVideo: null,
+  }
+
+  handleOnVideoSelect = (video: YoutubeVideo) => {
+    this.setState({ selectedVideo: video });
   }
 
   handleSubmit = async (searchTerm: string) => {
@@ -31,15 +36,18 @@ class App extends React.Component<{}, State> {
       videos: response.data.items,
       selectedVideo: response.data.items[0]
     })
-    console.log(response);
   }
 
   render () {
-    const { selectedVideo } = this.state;
+    const {
+      selectedVideo,
+      videos,
+    } = this.state;
+
     return(
-      <Grid container spacing={10}>
-        <Grid item xs={12}>
-          <Grid container spacing={10}>
+      <Grid container>
+        <Grid xs={12}>
+          <Grid container xs={12} spacing={3}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
@@ -47,7 +55,10 @@ class App extends React.Component<{}, State> {
               <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              <VideoList />
+              <VideoList
+                onVideoSelect={this.handleOnVideoSelect}
+                videos={videos}
+              />
             </Grid>
           </Grid>
         </Grid>

@@ -3,7 +3,7 @@ import { Paper, TextField } from "@material-ui/core";
 import React from 'react';
 
 interface Props {
-  onFormSubmit?: (event: string) => {},
+  onFormSubmit?(event: string): void,
 }
 
 interface State {
@@ -35,6 +35,7 @@ class SearchBar extends React.Component<Props, State> {
       <Paper elevation={6} style={{ padding: '25px' }}>
         <form onSubmit={this.handleSubmit}>
           <TextField fullWidth
+            autoFocus
             label="Search..."
             onChange={this.handleChange}
           />
