@@ -45,22 +45,17 @@ class App extends React.Component<{}, State> {
     } = this.state;
 
     return(
-      <Grid container>
-        <Grid xs={12}>
-          <Grid container xs={12} spacing={3}>
-            <Grid item xs={12}>
-              <SearchBar onFormSubmit={this.handleSubmit} />
-            </Grid>
-            <Grid item xs={8}>
-              <VideoDetail video={selectedVideo} />
-            </Grid>
-            <Grid item xs={4}>
-              <VideoList
-                onVideoSelect={this.handleOnVideoSelect}
-                videos={videos}
-              />
-            </Grid>
-          </Grid>
+      <Grid xs={12} container spacing={3}>
+        <Grid item xs={12}>
+          <SearchBar onFormSubmit={this.handleSubmit} />
+        </Grid>
+        <Grid item md={8} xs={12} style={{ marginBottom: "90px" }}>
+          <VideoDetail video={selectedVideo} />
+        </Grid>
+        <Grid item md={4} xs={12}>
+          <VideoList videos={videos}
+            onVideoSelect={this.handleOnVideoSelect}
+          />
         </Grid>
       </Grid>
     )
